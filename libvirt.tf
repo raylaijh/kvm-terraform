@@ -13,7 +13,7 @@ resource "libvirt_volume" "centos7-qcow2" {
   name = "${var.vm_machines[count.index]}.qcow2"
   pool = "default"
   #source = "https://cloud.centos.org/centos/7/images/CentOS-7-x86_64-GenericCloud.qcow2"
-  source = "./CentOS-7-x86_64-GenericCloud.qcow2"
+  source = "../CentOS-7-x86_64-GenericCloud.qcow2"
   format = "qcow2"
   count = length(var.vm_machines)
 }
@@ -34,7 +34,7 @@ resource "libvirt_cloudinit_disk" "commoninit" {
 variable "vm_machines" {
   description = "Create machines with these names"
   type = list(string)
-  default = ["master01", "worker01", "worker02", "worker03"]
+  default = ["master01", "worker01"]
 }
 
 # Define KVM domain to create
